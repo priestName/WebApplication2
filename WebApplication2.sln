@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication3", "WebAppli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{AE24FF0E-C1C8-474A-8B25-C581F81A5483}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcGreeterClient", "GrpcGreeterClient\GrpcGreeterClient.csproj", "{6812CCB2-3256-4E6F-B61D-A13AE088A5B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcGreeter1", "GrpcGreeter1\GrpcGreeter1.csproj", "{7741A7A3-DF25-42F2-A4A4-736B51434723}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{AE24FF0E-C1C8-474A-8B25-C581F81A5483}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE24FF0E-C1C8-474A-8B25-C581F81A5483}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE24FF0E-C1C8-474A-8B25-C581F81A5483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6812CCB2-3256-4E6F-B61D-A13AE088A5B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6812CCB2-3256-4E6F-B61D-A13AE088A5B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6812CCB2-3256-4E6F-B61D-A13AE088A5B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6812CCB2-3256-4E6F-B61D-A13AE088A5B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7741A7A3-DF25-42F2-A4A4-736B51434723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7741A7A3-DF25-42F2-A4A4-736B51434723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7741A7A3-DF25-42F2-A4A4-736B51434723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7741A7A3-DF25-42F2-A4A4-736B51434723}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
