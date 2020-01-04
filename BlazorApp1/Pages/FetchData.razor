@@ -1,0 +1,67 @@
+﻿@page "/fetchdata"
+
+@using BlazorApp1.Data
+@inject WeatherForecastService ForecastService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (Md5tests == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>key</th>
+                <th>value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Md5test in Md5tests)
+            {
+                <tr>
+                    <td>@Md5test.Id</td>
+                    <td>@Md5test.Key</td>
+                    <td>@Md5test.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    WeatherForecast[] forecasts;
+    List<WeatherMd5Test> Md5tests;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        Md5tests = await ForecastService.GetMd5();
+    }
+}

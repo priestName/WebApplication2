@@ -1,0 +1,51 @@
+﻿@page "/md5test"
+
+@using BlazorApp1.Data
+@inject WeatherMd5TestServer Md5TestServer
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Md5Test</title>
+</head>
+<body>
+    @if (Md5tests == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>key</th>
+                    <th>value</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Md5test in Md5tests)
+                {
+                    <tr>
+                        <td>@Md5test.Id</td>
+                        <td>@Md5test.Key</td>
+                        <td>@Md5test.Value</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</body>
+</html>
+
+@functions {
+    List<WeatherMd5Test>Md5tests = new WeatherMd5TestServer().GetMd51();
+
+    //protected async Task OnInitializedAsync()
+    //{
+    //    Md5tests = await Md5TestServer.GetMd5();
+    //}
+}
+

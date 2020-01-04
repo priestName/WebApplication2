@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To-do CRUD</title>
+    <style>
+        #app a{text-decoration:underline;color:#0026ff}
+        #app .hide{color:#808080}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="site in sites">
+                    <td v-text="site.id"></td>
+                    <td v-text="site.key"></td>
+                    <td v-text="site.value"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a v-on:click="TablePage(PageIndex = 0)">首页</a>
+        <a v-on:click="TablePage(PageIndex -= 1)" v-bind:class="{ hide: PageIndex == 0 }">上一页</a>
+        <a v-on:click="TablePage(PageIndex += 1)" v-bind:class="{ hide: PageIndex >= PageCount-1 }">下一页</a>
+        <a v-on:click="TablePage(PageIndex = PageCount - 1)">尾页</a>
+        <div>共{{TableCount}}条{{PageCount}}页当前第{{PageIndex + 1}}页</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://vuejs.org/js/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+        const uri = 'api/Md5Test';
+        new Vue({
+            el: '#app',
+            data: {
+                PageIndex: 0,
+                PageCount: 0,
+                TableCount: 0,
+                sites: []
+            },
+            methods: {
+                TablePage: function (i) {
+                    var self = this;
+                    if (i > self.pageCount - 1) {
+                        return;
+                    }
+                    axios.get(`${uri}/Page/${i}`)
+                        .then(response => (self.sites = response.data))
+                        .catch(error => console.error('Unable to get items.', error));
+                }
+            },
+            created: function () {
+                var self = this;
+                axios.get(`${uri}/Count`)
+                    .then(response =>(Page = response.data, self.PageCount = Page.pageCount, self.TableCount = Page.tableCount))
+                    .catch(error => console.error('Unable to get items.', error));
+                
+                axios.get(`${uri}/Page/${self.PageIndex}`)
+                    .then(response => (self.sites = response.data))
+                    .catch(error => console.error('Unable to get items.', error));
+            }
+        })
+        //const item = {
+        //    Key: "AAAAAA",
+        //    Value: "36d04a9d74392c727b1a9bf97a7bcbac"
+        //};
+        //$.ajax({
+        //    url: 'api/Md5Test/insert',
+        //    type: "POST",
+        //    async: true,
+        //    dataType: "json",
+        //    data: item,
+        //    contentType: "application/x-www-form-urlencoded",
+        //    success: function(a) {
+        //        console.log(a);
+        //    }
+        //});
+        //axios({
+        //    method: 'post',
+        //    url: `${uri}/insert`,
+        //    data: item
+        //})
+        //    .then(response => (console.log(response.data)))
+        //    .catch(error => console.error('Unable to get items.', error));
+        //fetch(`${uri}/Count`)
+        //    .then(response => response.json())
+        //    .then(function (date1) {
+        //        self.PageCount = date1.pageCount;
+        //        self.TableCount = date1.tableCount;
+        //    })
+        //   .catch(error => console.error('Unable to get items.', error));
+        //fetch(`${uri}/Page/${self.PageIndex}`)
+        //    .then(response => response.json())
+        //    .then(function (date) {
+        //        self.sites = date;
+        //    })
+        //    .catch(error => console.error('Unable to get items.', error));
+
+        //$.ajax({
+        //    url: 'http://192.168.3.13:60706/api/Md5Test/GetMD5/AAAAAA',
+        //    type: "Get",
+        //    async: true,
+        //    dataType: "json",
+        //    contentType: "application/x-www-form-urlencoded",
+        //    success: function(a) {
+        //        console.log(a);
+        //    }
+        //});
+    </script>
+</body>
+</html>

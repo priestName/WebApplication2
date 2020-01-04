@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Analyzers">
+      <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\sdk\3.0.100\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Analyzers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Components.Analyzers">
+      <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\sdk\3.0.100\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Components.Analyzers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Analyzers">
+      <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\sdk\3.0.100\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Mvc.Analyzers.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
